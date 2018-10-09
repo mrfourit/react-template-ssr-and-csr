@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "examples/src/index.html"),
+      template: path.join(__dirname, "../src/client/index.html"),
       filename: "./index.html"
     })
   ],
@@ -27,6 +27,14 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   devServer: {
-    port: 8888
-  }
+    hot: true,
+    inline: true,
+    host: "localhost",
+    port: 8888,
+    watchOptions: {
+      poll: true
+    },
+    historyApiFallback: true
+  },
+  devtool: 'eval-source-map'
 };

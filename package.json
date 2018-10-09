@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --mode development --host localhost --port 8888"
+    "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "babel-preset-react": "^6.24.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
@@ -22,6 +23,8 @@
   },
   "dependencies": {
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   }
 }

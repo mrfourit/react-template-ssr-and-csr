@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './app/component/index';
 
-ReactDOM.render("<p>Test app</p>", document.querySelector('#app'));
+ReactDOM.render(<Root/>, document.querySelector('#app'));
