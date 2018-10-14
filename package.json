@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js"
+    "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
+    "build-client": "webpack --progress --mode production --config ./config/webpack.client.js",
+    "server": "node --experimental-modules ./server/server.js",
+    "build-server": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +25,8 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router": "^4.3.1",
