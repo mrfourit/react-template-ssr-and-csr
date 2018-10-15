@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
     "build-client": "webpack --progress --mode production --config ./config/webpack.client.js",
-    "server": "node --experimental-modules ./server/server.js",
-    "build-server": "webpack"
+    "server": "node ./dist/main.js",
+    "build-server": "webpack --config ./config/webpack.server.js --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "fs": "0.0.1-security",
     "http": "0.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
