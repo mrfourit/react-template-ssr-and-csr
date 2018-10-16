@@ -3,7 +3,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.join(__dirname, "../src/index.js"),
+  entry: {
+    main: path.join(__dirname, "../src/index.js"),
+    common: ['react', 'react-dom']
+  },
+  output: {
+    path: path.join(__dirname, '../build-client'),
+    filename: '[name].js'
+  },
   module: {
     rules: [
       {

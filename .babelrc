@@ -1,6 +1,4 @@
 {
   "presets": ["@babel/react", "@babel/env"],
-  "plugins": [
-    ["transform-react-jsx", { "pragma": "dom" }]
-  ]
+  "plugins": ["@babel/plugin-transform-react-jsx"]
 }

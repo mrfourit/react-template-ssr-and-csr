@@ -1,7 +1,15 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, "../server/server.js"),
+  entry: {
+    server: path.join(__dirname, "../server/server.js"),
+    common: ['react', 'react-dom']
+  },
+  output: {
+    path: path.join(__dirname, '../build-server'),
+    filename: '[name].js'
+  },
   module: {
     rules: [
       {
@@ -24,6 +32,13 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+          NODE_ENV: JSON.stringify('development')
+      }
+    })
+  ],
   target: 'node',
   devServer: {
     hot: true,

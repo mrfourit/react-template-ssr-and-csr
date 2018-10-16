@@ -1,4 +1,4 @@
-export default ({ body, title }) => {
+export const template = ({ body, title }) => {
   return `
     <!DOCTYPE html>
     <html>

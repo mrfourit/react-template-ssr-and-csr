@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
     "build-client": "webpack --progress --mode production --config ./config/webpack.client.js",
-    "server": "node ./dist/main.js",
-    "build-server": "webpack --config ./config/webpack.server.js --mode production"
+    "server": "node ./build-server/server.js",
+    "build-server": "webpack --progress --config ./config/webpack.server.js --mode production"
   },
   "author": "",
   "license": "ISC",
