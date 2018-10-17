@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
-    "build-client": "webpack --progress --mode production --config ./config/webpack.client.js",
+    "dev": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
+    "build-client": "rm -rf ./build-client && webpack --progress --mode production --config ./config/webpack.client.js",
     "server": "node ./build-server/server.js",
-    "build-server": "webpack --progress --config ./config/webpack.server.js --mode production"
+    "build-server": "rm -rf ./build-server && webpack --progress --config ./config/webpack.server.js --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +31,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "seo-bot-detect": "^1.0.3"
   }
 }
