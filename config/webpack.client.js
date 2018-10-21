@@ -1,6 +1,7 @@
 const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 module.exports = {
   entry: {
@@ -8,8 +9,8 @@ module.exports = {
     common: ['react', 'react-dom']
   },
   output: {
-    path: path.join(__dirname, '../build-client'),
-    filename: '[name].js'
+    path: path.join(__dirname, '../build'),
+    filename: 'assets/js/[name].js'
   },
   module: {
     rules: [
@@ -26,9 +27,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      excludeAssets: [/main.js/, /common.js/],
       template: path.join(__dirname, "../src/client/index.html"),
       filename: "./index.html"
-    })
+    }),
+    new HtmlWebpackExcludeAssetsPlugin(),
+    new CopyWebpackPlugin(
+      [{
+      from: path.resolve(__dirname + "./../src/client/assets"),
+      to: path.resolve(__dirname + "./../build/assets")
+    }])
   ],
   resolve: {
     extensions: [".js", ".jsx"]

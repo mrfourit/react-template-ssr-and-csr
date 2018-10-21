@@ -3,11 +3,10 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    server: path.join(__dirname, "../server/server.js"),
-    common: ['react', 'react-dom']
+    server: path.join(__dirname, "../server/server.js")
   },
   output: {
-    path: path.join(__dirname, '../build-server'),
+    path: path.join(__dirname, '../build'),
     filename: '[name].js'
   },
   module: {
@@ -35,7 +34,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-          NODE_ENV: JSON.stringify('development')
+          NODE_ENV: JSON.stringify('production')
       }
     })
   ],
