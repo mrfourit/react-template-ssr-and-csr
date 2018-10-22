@@ -8,8 +8,15 @@ const {ListRoute}  = require('../src/app/component/root.js');
 const {template}  = require('./template.js');
 
 const server = express();
-console.log(express.static('assets'));
+
 server.use(express.static('assets'));
+server.use(express.static('/assets'));
+server.use(express.static(__dirname + '/assets'));
+server.use(express.static(__dirname + 'assets'));
+server.use(express.static(path.join('assets')));
+server.use(express.static(path.join('/assets')));
+server.use(express.static(path.join(__dirname + '/assets')));
+server.use(express.static(path.join(__dirname + 'assets')));
 
 // server.get('*', (req, res) => {
 //   const context = {};

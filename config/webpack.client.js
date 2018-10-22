@@ -34,8 +34,8 @@ module.exports = {
     new HtmlWebpackExcludeAssetsPlugin(),
     new CopyWebpackPlugin(
       [{
-      from: path.resolve(__dirname + "./../src/client/assets"),
-      to: path.resolve(__dirname + "./../build/assets")
+        from: path.resolve(__dirname + "./../src/client/assets"),
+        to: path.resolve(__dirname + "./../build/assets")
     }])
   ],
   resolve: {

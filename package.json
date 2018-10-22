@@ -8,7 +8,7 @@
     "build-client": "rm -rf ./build && webpack --progress --mode production --config ./config/webpack.client.js",
     "server": "node ./build/server.js",
     "build-server": "webpack --progress --config ./config/webpack.server.js --mode production",
-    "production": "npm run build-client && npm run build-server"
+    "build-production": "npm run build-client && npm run build-server"
   },
   "author": "",
   "license": "ISC",
