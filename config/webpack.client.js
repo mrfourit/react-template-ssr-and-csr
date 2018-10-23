@@ -46,6 +46,7 @@ module.exports = {
     inline: true,
     host: "localhost",
     port: 8888,
+    publicPath: "/assets/",
     watchOptions: {
       poll: true
     },

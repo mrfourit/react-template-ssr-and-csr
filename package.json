@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 8888 --config ./config/webpack.client.js",
+    "dev": "webpack-dev-server --hot --inline --progress --mode development --host localhost --port 9090 --config ./config/webpack.client.js",
     "build-client": "rm -rf ./build && webpack --progress --mode production --config ./config/webpack.client.js",
-    "server": "node ./build/server.js",
+    "server": "cd build && node server.js",
     "build-server": "webpack --progress --config ./config/webpack.server.js --mode production",
     "build-production": "npm run build-client && npm run build-server"
   },

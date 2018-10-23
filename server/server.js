@@ -29,7 +29,7 @@ server.get('*', (req, res) => {
       title: 'Hello World from the server'
     }));
   } else {
-    res.sendFile('./index.html');
+    res.sendFile(path.resolve('./index.html'));
   }
 });
 
