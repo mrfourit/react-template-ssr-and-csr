@@ -9,7 +9,7 @@ const {template}  = require('./template.js');
 
 const server = express();
 
-server.use(express.static('assets'));
+server.use("/assets", express.static('./public/assets'));
 
 server.get('*', (req, res) => {
   const context = {};
@@ -22,14 +22,14 @@ server.get('*', (req, res) => {
       <ListRoute/>
     </StaticRouter>
   );
-
+console.log("Check bot:", seoBot(req));
   if (seoBot(req)) {
     res.send(template({
       body: appString,
       title: 'Hello World from the server'
     }));
-  } else {
-    res.sendFile(path.resolve('./index.html'));
+  } else {console.log("error");
+    res.sendFile(path.resolve('./public/index.html'));
   }
 });
 

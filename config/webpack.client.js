@@ -9,7 +9,7 @@ module.exports = {
     common: ['react', 'react-dom']
   },
   output: {
-    path: path.join(__dirname, '../build'),
+    path: path.join(__dirname, '../build/public'),
     filename: 'assets/js/[name].js'
   },
   module: {
@@ -35,7 +35,7 @@ module.exports = {
     new CopyWebpackPlugin(
       [{
         from: path.resolve(__dirname + "./../src/client/assets"),
-        to: path.resolve(__dirname + "./../build/assets")
+        to: path.resolve(__dirname + "./../build/public/assets")
     }])
   ],
   resolve: {
@@ -46,11 +46,11 @@ module.exports = {
     inline: true,
     host: "localhost",
     port: 8888,
-    publicPath: "/assets/",
     watchOptions: {
       poll: true
     },
-    historyApiFallback: true
+    historyApiFallback: true,
+    publicPath: '/public'
   },
   devtool: 'eval-source-map'
 };
