@@ -22,13 +22,13 @@ server.get('*', (req, res) => {
       <ListRoute/>
     </StaticRouter>
   );
-console.log("Check bot:", seoBot(req));
+
   if (seoBot(req)) {
     res.send(template({
       body: appString,
       title: 'Hello World from the server'
     }));
-  } else {console.log("error");
+  } else {
     res.sendFile(path.resolve('./public/index.html'));
   }
 });

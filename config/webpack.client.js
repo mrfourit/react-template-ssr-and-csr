@@ -48,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      excludeAssets: [/main.js/, /common.js/, /style.js/],
+      excludeAssets: [/main.js/, /common.js/, /style.js/, /style.css/],
       template: path.join(__dirname, "../src/client/index.html"),
       filename: "./index.html"
     }),
