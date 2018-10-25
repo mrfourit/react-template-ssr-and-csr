@@ -13,7 +13,10 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="">Home Component</div>
+      <div className="">
+        <span>Home Component</span>
+        <img src="http://localhost:9090/assets/images/1.jpeg" />
+      </div>
     );
   }
 }
