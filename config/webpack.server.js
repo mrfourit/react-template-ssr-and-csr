@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -29,15 +31,23 @@ module.exports = {
     fs: 'empty'
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    modules: [__dirname, 'node_modules']
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
           NODE_ENV: JSON.stringify('production')
       }
-    })
+    }),
+    new CopyWebpackPlugin(
+      [{
+        from: path.resolve(__dirname + "/../server/template.pug"),
+        to: path.resolve(__dirname + "/../build")
+      }]
+    )
   ],
+  externals: [nodeExternals()],
   target: 'node',
   devServer: {
     hot: true,

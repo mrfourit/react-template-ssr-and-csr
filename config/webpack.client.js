@@ -57,7 +57,8 @@ module.exports = {
       [{
         from: path.resolve(__dirname + "./../src/client/assets"),
         to: path.resolve(__dirname + "./../build/public/assets")
-    }]),
+      }]
+    ),
     new MiniCssExtractPlugin({
       filename: 'assets/styles/[name].css'
     })

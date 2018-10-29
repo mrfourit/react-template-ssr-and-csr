@@ -5,7 +5,7 @@ const { renderToString }  = require('react-dom/server');
 const { StaticRouter }  = require('react-router');
 const seoBot = require('seo-bot-detect');
 const {ListRoute}  = require('../src/app/component/root.js');
-const {template}  = require('./template.js');
+const pug = require('pug');
 
 const server = express();
 
@@ -24,10 +24,8 @@ server.get('*', (req, res) => {
   );
 
   if (seoBot(req)) {
-    res.send(template({
-      body: appString,
-      title: 'Hello World from the server'
-    }));
+    let pugCompile = pug.compileFile('template.pug');
+    res.send(pugCompile({appString: appString}));
   } else {
     res.sendFile(path.resolve('./public/index.html'));
   }
