@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 module.exports = {
   entry: {

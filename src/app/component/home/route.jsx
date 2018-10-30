@@ -1,24 +1,40 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { homeTest } from '../../actions/home.actions.js';
 
 class Home extends React.Component {
   constructor() {
     super();
-    console.log("Constructor");
   }
-  componentWillMount() {
-    console.log("Will mount");
+
+  testAction() {
+    this.props.homeTest();
   }
-  componentDidMount() {
-    console.log("Didmount");
-  }
+
   render() {
+    console.log(this.props.isTest);
+
     return (
       <div className="">
         <span>Home Component</span>
         <img src="http://localhost:9090/assets/images/1.jpeg" />
+        <button onClick={this.testAction.bind(this)}>Click</button>
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    isTest: state.homeReducers.isTest
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    homeTest: homeTest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
