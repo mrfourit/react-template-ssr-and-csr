@@ -1,8 +1,8 @@
-import path from 'path';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -17,13 +17,13 @@ module.exports = {
   module: {
     rules: [
       {
-          test: /\.(js|jsx)$/,
-          use: "babel-loader",
-          exclude: /node_modules/
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /node_modules/
       },
       {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.(scss|css)$/,

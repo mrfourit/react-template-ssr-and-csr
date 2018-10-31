@@ -1,7 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
-import nodeExternals from 'webpack-node-externals';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -14,13 +14,13 @@ module.exports = {
   module: {
     rules: [
       {
-          test: /\.(js|jsx)$/,
-          use: "babel-loader",
-          exclude: /node_modules/
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /node_modules/
       },
       {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
@@ -37,7 +37,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-          NODE_ENV: JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new CopyWebpackPlugin(
