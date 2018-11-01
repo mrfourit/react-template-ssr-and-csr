@@ -45,6 +45,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "seo-bot-detect": "^1.0.3"
+    "seo-bot-detect": "^1.0.3",
+    "superagent": "^4.0.0-beta.5"
   }
 }
