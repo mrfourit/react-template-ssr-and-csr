@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { ListRoute } from './root.js';
 import configStore from '../store/index.js';
+import history from '../history.js';
 
 class Root extends React.Component {
   render() {
@@ -10,9 +12,11 @@ class Root extends React.Component {
 
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <ListRoute/>
-        </BrowserRouter>
+        <ConnectedRouter history={history}>
+          <Router history={history}>
+            <ListRoute/>
+          </Router>
+        </ConnectedRouter>
       </Provider>
     );
   }
