@@ -8,6 +8,10 @@ class Home extends React.Component {
     super();
   }
 
+  componentWillMount() {
+    this.props.homeTest();
+  }
+
   testAction() {
     this.props.homeTest();
   }
