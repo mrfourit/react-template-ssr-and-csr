@@ -8,63 +8,73 @@ class BaseAPI {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     };
-
-    this.agent = superagent;
   }
 
   get(api, data) {
-    let endpoint = this.api + api;
+    let endpoint = this.api + api,
+      agent = null;
 
-    this.agent.get(endpoint)
-      .query(data)
+    agent = superagent.get(endpoint)
       .set(this.header);
 
-    return this.agent;
+    if (data) {
+      agent.query(data)
+    }
+
+    return agent;
   }
 
   post(api, data) {
-    let endpoint = this.api + api;
+    let endpoint = this.api + api,
+      agent = null;
 
-    this.agent.post(endpoint)
+    agent = superagent.post("/asd")
+      .set(this.header)
       .send(JSON.stringify(data));
 
-    return this.agent;
+    return agent;
   }
 
   put(api, data) {
-    let endpoint = this.api + api;
+    let endpoint = this.api + api,
+      agent = null;
 
-    this.agent.put(endpoint)
-      .send(JSON.stringify(data));
+    agent = superagent.put(endpoint)
+      .send(JSON.stringify(data))
+      .set(this.header);
 
-    return this.agent;
+    return agent;
   }
 
   patch(api, data) {
-    let endpoint = this.api + api;
+    let endpoint = this.api + api,
+      agent = null;
 
-    this.agent.patch(endpoint)
+    agent = superagent.patch(endpoint)
+      .set(this.header)
       .send(JSON.stringify(data));
 
-    return this.agent;
+    return agent;
   }
 
   uploadFile(api, file, data) {
     let formData = new FormData(file),
-      endpoint = this.api + api;;
+      endpoint = this.api + api,
+      agent = null;
 
     formData.append(field);
 
-    this.agent.post(endpoint)
+    agent = superagent.post(endpoint)
+      .set(this.header)
       .set('Content-Type', 'multipart/form-data');
 
     if (typeof data === 'object' && data) {
       for (let key in data) {
-        this.agent.field(key, data[key]);
+        agent.field(key, data[key]);
       }
     }
 
-    return this.agent;
+    return agent;
   }
 }
 

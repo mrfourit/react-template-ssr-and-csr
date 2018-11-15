@@ -1,9 +1,12 @@
+import superagent from 'superagent';
 import BaseAPI from './base.js';
 
 class TestAPI extends BaseAPI {
   testPost(data) {
-    this.post();
+    let endpoint = '/te';
+
+    return this.post(endpoint, data);
   }
 }
 
-export default TestAPI;
+export const testAPI = new TestAPI();
