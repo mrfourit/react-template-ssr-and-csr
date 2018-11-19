@@ -8,6 +8,7 @@ import pug from 'pug';
 import { Provider } from 'react-redux';
 import configStore from '../src/app/store/index.js';
 import { ListRoute } from '../src/app/component/root.js';
+import * as listAction from '../src/app/actions/index';
 
 const server = express();
 
@@ -16,6 +17,17 @@ server.use("/assets", express.static('./public/assets'));
 server.get('*', (req, res) => {
   const context = {},
     store = configStore();
+
+  let index= 0;
+
+    for (let keyAction in listAction) {
+      console.log("INDEX SERVER", ++index);
+      Promise.all(listAction[keyAction]).then(
+        (responses) => {
+          console.log("Server JS SUCCESS", responses);
+        }
+      );
+    }
 
   const appString = renderToString(
     <Provider store={store}>

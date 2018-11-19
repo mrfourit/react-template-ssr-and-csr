@@ -28,7 +28,7 @@ class BaseAPI {
     let endpoint = this.api + api,
       agent = null;
 
-    agent = superagent.post("/asd")
+    agent = superagent.post(endpoint)
       .set(this.header)
       .send(JSON.stringify(data));
 

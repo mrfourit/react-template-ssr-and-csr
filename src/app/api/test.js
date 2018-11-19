@@ -3,9 +3,9 @@ import BaseAPI from './base.js';
 
 class TestAPI extends BaseAPI {
   testPost(data) {
-    let endpoint = '/te';
+    let endpoint = '/';
 
-    return this.post(endpoint, data);
+    return this.get(endpoint, data);
   }
 }
 

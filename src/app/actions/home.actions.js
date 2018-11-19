@@ -8,20 +8,30 @@ export function homeTest() {
     });
 
     return testAPI.testPost({ 'asd': 324 }).then(
-      async (res) => {
-        await testSuccess();
+      (res) => {
+        dispatch(testSuccess());
       },
-      async () => {
-        await testFail();
+      () => {
+        dispatch(testFail());
       }
     );
   }
 }
 
 function testSuccess() {
-  console.log("Success");
+  return (dispatch) => {
+    dispatch({
+      type: homeConstants.TEST_SUCCESS,
+      data: "SUCCESS"
+    });
+  }
 }
 
 function testFail() {
-  console.log("fail");
+  return (dispatch) => {
+    dispatch({
+      type: homeConstants.TEST_FAIL,
+      data: "FAIL"
+    });
+  }
 }

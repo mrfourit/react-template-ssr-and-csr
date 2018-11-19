@@ -24,6 +24,7 @@ class Home extends React.Component {
         <span>Home Component</span>
         <img src="http://localhost:9090/assets/images/1.jpeg" />
         <button onClick={this.testAction.bind(this)}>Click</button>
+        <h1>{this.props.data}</h1>
       </div>
     );
   }
@@ -31,7 +32,8 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isTest: state.homeReducers.isTest
+    isTest: state.homeReducers.isTest,
+    data: state.homeReducers.data
   };
 };
 
