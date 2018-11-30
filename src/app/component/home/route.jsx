@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { homeTest } from '../../actions/home.actions.js';
+import { homeActions } from '../../actions';
 
 class Home extends React.Component {
   constructor() {
@@ -9,7 +9,7 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.homeTest();
+    this.props.homeTest(111);
   }
 
   testAction() {
@@ -17,7 +17,7 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props.isTest);
+    console.log("Router.jsx home:", this.props.data, "-------", (new Date).getTime());
 
     return (
       <div className="">
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    homeTest: homeTest
+    homeTest: homeActions.homeTestRenderServer.bind(homeActions)
   }, dispatch);
 };
 

@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import configStore from '../src/app/store/index.js';
 import { ListRoute } from '../src/app/component/root.js';
 import * as listAction from '../src/app/actions/index';
+import asyncAction from '../src/app/lib/asyncAction';
 
 const server = express();
 
@@ -18,34 +19,29 @@ server.get('*', (req, res) => {
   const context = {},
     store = configStore();
 
-  let index= 0;
+  let index = 0;
 
-    for (let keyAction in listAction) {
-      console.log("INDEX SERVER", ++index);
-      Promise.all(listAction[keyAction]).then(
-        (responses) => {
-          console.log("Server JS SUCCESS", responses);
-        }
-      );
+  (async function () {
+    await asyncAction.runActionOnServer(store.dispatch);
+    console.log("Server.js call run action", (new Date).getTime());
+    const appString = renderToString(
+      <Provider store={store}>
+        <StaticRouter
+          location={req.url}
+          context={context}
+        >
+          <ListRoute />
+        </StaticRouter>
+      </Provider>
+    );
+
+    if (seoBot(req)) {
+      let pugCompile = pug.compileFile('template.pug');
+      res.send(pugCompile({ appString: appString }));
+    } else {
+      res.sendFile(path.resolve('./public/index.html'));
     }
-
-  const appString = renderToString(
-    <Provider store={store}>
-      <StaticRouter
-        location={req.url}
-        context={context}
-      >
-        <ListRoute />
-      </StaticRouter>
-    </Provider>
-  );
-
-  if (seoBot(req)) {
-    let pugCompile = pug.compileFile('template.pug');
-    res.send(pugCompile({ appString: appString }));
-  } else {
-    res.sendFile(path.resolve('./public/index.html'));
-  }
+  }());
 });
 
 server.listen(9090, function () {

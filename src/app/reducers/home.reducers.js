@@ -6,7 +6,7 @@ const initState = {
 };
 
 export function homeReducers(state = initState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case homeConstants.TEST:
       return {
         ...state,
@@ -14,19 +14,19 @@ export function homeReducers(state = initState, action) {
       };
 
     case homeConstants.TEST_SUCCESS:
-    console.log("HOME REDUCER SUCCESS");
+      console.log("HOME REDUCER SUCCESS", (new Date).getTime());
       return {
         ...state,
         data: action.data
       };
 
     case homeConstants.TEST_FAIL:
-    console.log("HOME REDUCER FAIL");
+      console.log("HOME REDUCER FAIL");
       return {
         ...state,
         data: action.data
       };
-    
+
     default:
       return state;
   }

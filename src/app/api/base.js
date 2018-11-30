@@ -2,7 +2,7 @@ import superagent from 'superagent';
 
 class BaseAPI {
   constructor() {
-    this.api = 'http://localhost';
+    this.api = 'http://localhost:3000';
 
     this.header = {
       Accept: 'application/json',
