@@ -9,7 +9,9 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.homeTest(111);
+    if (!this.props.data && !this.props.isTest) {
+      this.props.homeTest(111);
+    }
   }
 
   testAction() {
@@ -17,8 +19,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log("Router.jsx home:", this.props.data, "-------", (new Date).getTime());
-
     return (
       <div className="">
         <span>Home Component</span>

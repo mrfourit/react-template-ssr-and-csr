@@ -4,30 +4,48 @@ import asyncAction from '../lib/asyncAction';
 
 class HomeActions {
   homeTestRenderServer(data) {
-    return async (dispatch) => {
-      await dispatch(asyncAction.wrapperAction(this.homeTest.bind(this, data)));
-    }
-  }
-
-  homeTest(data) {
     return (dispatch) => {
       dispatch({
         type: homeConstants.TEST
       });
 
-      console.log("Home test action");
-
-      return testAPI.testPost({ 'asd': 324 }).then(
-        async (res) => {
-          console.log("Home action");
-          await dispatch(this.testSuccess(data));
-        },
-        async () => {
-          await dispatch(this.testFail());
-        }
-      );
+      asyncAction.wrapperAction(async () => {
+        console.log("ASYNC FUNCTION Home action");
+        await testAPI.testPost({ 'asd': 324 }).then(
+          (res) => {
+            console.log("Home action");
+            dispatch(this.testSuccess(data));
+          },
+          () => {
+            dispatch(this.testFail());
+          }
+        );
+      });
     }
+    // return async (dispatch) => {
+    //   await dispatch(asyncAction.wrapperAction(this.homeTest.bind(this, data)));
+    // }
   }
+
+  // homeTest(data) {
+  //   return (dispatch) => {
+  //     dispatch({
+  //       type: homeConstants.TEST
+  //     });
+
+  //     (async () => {
+  //       await testAPI.testPost({ 'asd': 324 }).then(
+  //         (res) => {
+  //           console.log("Home action");
+  //           dispatch(this.testSuccess(data));
+  //         },
+  //         () => {
+  //           dispatch(this.testFail());
+  //         }
+  //       );
+  //     })();
+  //   }
+  // }
 
 
   testSuccess(data) {

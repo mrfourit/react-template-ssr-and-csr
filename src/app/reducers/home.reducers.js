@@ -10,21 +10,23 @@ export function homeReducers(state = initState, action) {
     case homeConstants.TEST:
       return {
         ...state,
-        isTest: !state.isTest
+        isTest: true
       };
 
     case homeConstants.TEST_SUCCESS:
       console.log("HOME REDUCER SUCCESS", (new Date).getTime());
       return {
         ...state,
-        data: action.data
+        data: action.data,
+        isTest: false
       };
 
     case homeConstants.TEST_FAIL:
-      console.log("HOME REDUCER FAIL");
+      console.log("HOME REDUCER FAIL", (new Date).getTime());
       return {
         ...state,
-        data: action.data
+        data: action.data,
+        isTest: false
       };
 
     default:
