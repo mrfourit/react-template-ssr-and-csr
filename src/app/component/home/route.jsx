@@ -10,6 +10,7 @@ class Home extends React.Component {
 
   componentWillMount() {
     if (!this.props.data && !this.props.isTest) {
+      console.log("componentWillMount", this.props.data, this.props.isTest);
       this.props.homeTest(111);
     }
   }

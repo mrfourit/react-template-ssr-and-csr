@@ -22,7 +22,8 @@ server.get('*', (req, res) => {
 
   (async function () {
     await asyncAction.runActionOnServer(store.dispatch);
-    console.log("Server.js call run action", (new Date).getTime());
+
+    console.log("Server.js call list action", (new Date()).getTime());
 
     appString = render(req, res);
 
