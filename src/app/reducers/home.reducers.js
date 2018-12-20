@@ -21,7 +21,6 @@ export function homeReducers(state = initState, action) {
       };
 
     case homeConstants.TEST_FAIL:
-      console.log(action.data, "Home reducer.js", (new Date()).getTime());
       return {
         ...state,
         data: action.data,

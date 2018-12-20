@@ -11,10 +11,9 @@ class AsyncAction {
     }
   }
 
-  async runActionOnServer(dispatch) {
+  async runActionOnServer() {
     for (const action of this.pendingAction) {
       await action();
-      console.log("AsyncAction.js lopp", (new Date()).getTime(), "-----------------", this.pendingAction.length);
     }
 
     this.pendingAction = [];

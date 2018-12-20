@@ -18,14 +18,12 @@ server.get('*', (req, res) => {
   let appString = null,
     store = configStore();
 
-  render(req, res);
+  render(req, store);
 
   (async function () {
-    await asyncAction.runActionOnServer(store.dispatch);
+    await asyncAction.runActionOnServer();
 
-    console.log("Server.js call list action", (new Date()).getTime());
-
-    appString = render(req, res);
+    appString = render(req, store);
 
     if (seoBot(req)) {
       let pugCompile = pug.compileFile('template.pug');
@@ -40,9 +38,8 @@ server.listen(9090, function () {
   console.log("Server running port 9090");
 });
 
-function render(req, res) {
+function render(req, store) {
   let context = {},
-    store = configStore(),
     appString = null;
 
   appString = renderToString(

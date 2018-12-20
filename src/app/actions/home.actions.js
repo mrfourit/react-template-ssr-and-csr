@@ -11,11 +11,11 @@ class HomeActions {
 
       asyncAction.wrapperAction(async () => {
         await testAPI.testPost({ 'asd': 324 }).then(
-          async (res) => {
-            await dispatch(this.testSuccess(data));
+          (res) => {
+            dispatch(this.testSuccess(data));
           },
-          async () => {
-            await dispatch(this.testFail());
+          () => {
+            dispatch(this.testFail());
           }
         );
       });
