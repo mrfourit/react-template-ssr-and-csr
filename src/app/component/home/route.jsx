@@ -1,7 +1,8 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { homeActions } from '../../actions';
+import { Link } from 'react-router-dom';
+import { homeTestRenderServer } from '../../actions/home.actions';
 
 class Home extends React.Component {
   constructor() {
@@ -10,7 +11,7 @@ class Home extends React.Component {
 
   componentWillMount() {
     if (!this.props.data && !this.props.isTest) {
-      this.props.homeTest(123123);
+      this.props.homeTest(123123123);
     }
   }
 
@@ -24,6 +25,7 @@ class Home extends React.Component {
         <span>Home Component</span>
         <img src="http://localhost:9090/assets/images/1.jpeg" />
         <button onClick={this.testAction.bind(this)}>Click</button>
+        <Link to="/about">Link About</Link>
         <h1>{this.props.data}</h1>
       </div>
     );
@@ -39,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    homeTest: homeActions.homeTestRenderServer.bind(homeActions)
+    homeTest: homeTestRenderServer
   }, dispatch);
 };
 
