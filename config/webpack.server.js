@@ -45,6 +45,10 @@ module.exports = {
       [{
         from: path.resolve(__dirname + "/../server/template.pug"),
         to: path.resolve(__dirname + "/../build")
+      },
+      {
+        from: path.resolve(__dirname + "/../package.json"),
+        to: path.resolve(__dirname + "/../build")
       }]
     )
   ],
