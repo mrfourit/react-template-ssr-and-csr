@@ -53,16 +53,5 @@ module.exports = {
     )
   ],
   externals: [nodeExternals()],
-  target: 'node',
-  devServer: {
-    hot: true,
-    inline: true,
-    host: "localhost",
-    port: 8888,
-    watchOptions: {
-      poll: true
-    },
-    historyApiFallback: true
-  },
-  devtool: 'eval-source-map'
+  target: 'node'
 };
