@@ -1,7 +1,7 @@
 let history = {};
 
-if (typeof document !== 'undefined') {
-  const createBrowserHistory = require('history/createBrowserHistory').default;
+if (typeof window !== 'undefined') {
+  const createBrowserHistory = require("history").createBrowserHistory;
 
   history = createBrowserHistory()
 }
