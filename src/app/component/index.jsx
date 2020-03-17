@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { ListRoute } from './root.js';
 import configStore from '../store/index.js';
 import history from '../history.js';
+import routerClient from './routerClient';
 
 class Root extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class Root extends React.Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Router history={history}>
-            <ListRoute/>
+            <ListRoute routerCommon={routerClient} />
           </Router>
         </ConnectedRouter>
       </Provider>
